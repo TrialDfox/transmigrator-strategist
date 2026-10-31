@@ -2,7 +2,7 @@
 
 > 来自异界或未来的战略践行者：动手改变前先盘清自身优劣、评估时势与敌友，抓信息转优势、经营声势，务实规划你的下一步。你只需告诉他「我有什么、我面临什么」，他来分析与规划。
 
-这是一个 **WorkBuddy 专家包（Agent 型）**——不是代码库，是可加载的角色配置包。装进 WorkBuddy 后，它会以「穿越者 / 重生者」的视角与你协作：先读势、再择时、后选人，把信息变成你的筹码。
+这是一个**跨平台通用 Agent** 定义，采用 `AGENTS.md` 约定——Claude Code / Cursor / Codex / GitHub Copilot / WorkBuddy 等主流客户端都能直接读取加载。同时保留 WorkBuddy 专用兼容层，不破坏你在 WorkBuddy 里的现有使用。
 
 ## 为什么是「穿越者」
 
@@ -15,42 +15,57 @@
 
 ```
 transmigrator-strategist/
+├── AGENTS.md                         ← 通用 Agent 角色定义（核心，跨平台可读）
 ├── .codebuddy-plugin/
-│   └── plugin.json                  # 专家元数据：名称 / 分类 / 标签 / 头像 / 引导语
+│   └── plugin.json                   ← WorkBuddy 元数据（兼容层）
 ├── agents/
-│   └── transmigrator-strategist.md  # 角色正文（人设核心，含 6 项丰满化补充）
+│   └── transmigrator-strategist.md   ← WorkBuddy 角色定义（兼容层）
 ├── avatars/
-│   ├── expert.png                   # 头像（512×512，≤500KB）
+│   ├── expert.png                    ← 头像（512×512，≤500KB）
 │   └── .gitkeep
-├── README.md                        # 本文件
-├── LICENSE                          # MIT
+├── references/
+│   └── principles.md                ← 准则速查与展开（深度文档）
+├── examples/
+│   └── session-1.md                  ← 示例对话
+├── scripts/
+│   └── validate_agent.py            ← 仓库结构校验脚本
+├── README.md
+├── LICENSE                          ← MIT
 └── .gitignore
 ```
 
-## 安装方式
+## 多平台用法
 
-### 方式 A：放进本地专家目录（推荐开发 / 调试）
+### Claude Code / Codex
+把 `AGENTS.md` 放到项目根目录或 `~/.claude/AGENTS.md`（全局），启动会话即生效。
 
-将整个 `transmigrator-strategist/` 目录放到 WorkBuddy 的自定义专家 marketplace 下，例如：
+### Cursor
+把 `AGENTS.md` 放到项目根目录，Cursor 会自动作为项目级 Agent 指令读取。
+
+### GitHub Copilot
+把 `AGENTS.md` 放到仓库根目录；在 `.github/copilot-instructions.md` 中 `@import` 或直接复用其内容。
+
+### WorkBuddy（兼容层）
+保留 `.codebuddy-plugin/plugin.json` + `agents/transmigrator-strategist.md`。将整个目录放到专家目录：
 
 ```
 C:\Users\<你的用户名>\.workbuddy\plugins\marketplaces\my-experts\plugins\transmigrator-strategist\
 ```
 
-然后运行注册脚本，使其出现在专家中心：
+然后运行注册脚本使其出现在专家中心：
 
 ```bash
 python3 "<WorkBuddy>/resources/app.asar.unpacked/resources/plugins/workbuddy-builtin/skills/expert-manager/scripts/register_expert.py" \
-  "<你的专家目录>/transmigrator-strategist"
+  "<专家目录>/transmigrator-strategist"
 ```
 
-### 方式 B：打包分享
+## 校验仓库
 
 ```bash
-zip -r transmigrator-strategist.zip transmigrator-strategist/
+python3 scripts/validate_agent.py
 ```
 
-把 zip 发给他人，解压到其专家目录即可。
+检查核心文件齐全、头像体积 / 尺寸合规、plugin.json 合法。
 
 ## 使用示例
 
@@ -62,24 +77,7 @@ zip -r transmigrator-strategist.zip transmigrator-strategist/
 请盘清我的优劣，评估时势，并规划接下来要做的事与准备。
 ```
 
-**其他常用问法：**
-
-- 评估当前社会 / 行业 / 家庭环境对我的利弊，指出谁是友军、谁是阻力。
-- 把最近这条新闻 / 政策 / 舆论转化为我的具体优势，并给出可执行动作。
-- 我下一步想做 [X]，帮我判断时机对不对、该找谁、声势怎么造。
-
-## 输出结构
-
-专家每轮回复通常包含以下段落（按需省略）：
-
-```
-【态势判断】    我有什么 / 我面临什么 / 机会与威胁
-【敌友划分】    友军 / 阻力 / 可争取者
-【下一步规划】  按「态势→时机→人选→声势→执行」排出动作
-【准备清单】    落地所需的资源、人脉、材料
-【已知·未知·假设】 明确标注哪些已知、哪些未知、哪些是推测
-【复盘】        上轮落地与否 / 敌友判断是否变 / 声势增减 / 态势变化
-```
+完整示例见 [`examples/session-1.md`](./examples/session-1.md)；准则速查见 [`references/principles.md`](./references/principles.md)。
 
 ## 替换头像
 

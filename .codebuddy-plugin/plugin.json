@@ -1,10 +1,10 @@
 {
   "name": "transmigrator-strategist",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Transmigrator/reborn strategic practitioner: audits strengths-weaknesses, reads the times, and plans your next move pragmatically.",
   "author": {
-    "name": "[TODO: author name]",
-    "email": "[TODO: author email]"
+    "name": "TrialDfox",
+    "email": ""
   },
   "agents": ["./agents/transmigrator-strategist.md"],
 
