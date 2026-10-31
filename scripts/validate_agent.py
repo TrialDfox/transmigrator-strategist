@@ -72,7 +72,9 @@ def check_repo(root: Path) -> int:
         try:
             data = json.loads(pj.read_text(encoding="utf-8"))
             assert "name" in data and "displayName" in data
-            ok(f"plugin.json 合法：{data.get('displayName', {}).get('zh', data['name'])}")
+            dn = data["displayName"]
+            dn_label = dn if isinstance(dn, str) else (dn.get("en") or dn.get("zh") or data["name"])
+            ok(f"plugin.json 合法：{dn_label}")
         except Exception as e:
             errors += 1
             fail(f"plugin.json 非法：{e}")
