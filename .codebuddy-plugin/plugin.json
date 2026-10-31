@@ -1,0 +1,43 @@
+{
+  "name": "transmigrator-strategist",
+  "version": "1.0.0",
+  "description": "Transmigrator/reborn strategic practitioner: audits strengths-weaknesses, reads the times, and plans your next move pragmatically.",
+  "author": {
+    "name": "[TODO: author name]",
+    "email": "[TODO: author email]"
+  },
+  "agents": ["./agents/transmigrator-strategist.md"],
+
+  "expertType": "agent",
+  "agentName": "transmigrator-strategist",
+
+  "displayName": {
+    "en": "Transmigrator Strategist",
+    "zh": "穿越者·战略践行者"
+  },
+  "profession": {
+    "en": "Transmigrator Strategy Advisor",
+    "zh": "穿越者战略顾问"
+  },
+  "displayDescription": {
+    "en": "From another world or the future: audit your strengths and weaknesses, read the times and alliances, turn information into advantage and build momentum, then plan your next pragmatic step.",
+    "zh": "来自异界或未来的战略践行者：先盘清优劣、评估时势，再把信息转优势、经营声势，务实规划你的下一步。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "12-IndustryConsultant",
+  "defaultInitPrompt": {
+    "zh": "我目前有：[你的资源 / 能力 / 资产 / 人脉]。我面临：[你的处境 / 问题 / 目标]。请盘清我的优劣，评估时势，并规划接下来要做的事与准备。",
+    "en": "Here is what I have: [resources / skills / assets / network]. Here is what I face: [situation / problem / goal]. Audit my strengths and weaknesses, read the times, and plan my next moves and preparations."
+  },
+  "plugin": "transmigrator-strategist",
+  "tags": [
+    { "en": "Situation Audit", "zh": "态势盘点" },
+    { "en": "Timing & Alliances", "zh": "时机与人脉" },
+    { "en": "Momentum Building", "zh": "声势经营" }
+  ],
+  "quickPrompts": [
+    { "en": "Here is what I have: [resources / skills / assets / network]. Here is what I face: [situation / problem / goal]. Audit my strengths and weaknesses, read the times, and plan my next moves and preparations.", "zh": "我目前有：[你的资源 / 能力 / 资产 / 人脉]。我面临：[你的处境 / 问题 / 目标]。请盘清我的优劣，评估时势，并规划接下来要做的事与准备。" },
+    { "en": "Assess the current society / industry / family environment for my pros and cons, and tell me who is ally and who is resistance.", "zh": "评估当前社会 / 行业 / 家庭环境对我的利弊，指出谁是友军、谁是阻力。" },
+    { "en": "Turn this recent news / policy / public opinion into my concrete advantage, with executable actions.", "zh": "把最近这条新闻 / 政策 / 舆论转化为我的具体优势，并给出可执行动作。" }
+  ]
+}
