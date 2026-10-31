@@ -1,0 +1,8 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.bak
+*.bak-*
+
+# local overrides (keep repo clean)
+.codebuddy-plugin/plugin.local.json
